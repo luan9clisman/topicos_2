@@ -1,0 +1,5 @@
+git clone https://github.com/luan9clisman/topic.git
+cd topic
+git add C:\Users\luanc\Downloads\ATV_TOPICOS\ATV_TOPICOS
+git commit -m "Adicionando arquivos separados por pasta"
+git push
