@@ -15,10 +15,14 @@
   "author": "LUAN_CLISMAN",
   "license": "MIT",
   "dependencies": {
-    "readline-sync": "^1.4.10"
+    "pg": "^8.11.3",
+    "readline-sync": "^1.4.10",
+    "reflect-metadata": "^0.2.1",
+    "sqlite3": "^5.1.7",
+    "typeorm": "^0.3.20"
   },
   "devDependencies": {
-    "@types/node": "^16.7.1",
+    "@types/node": "^16.18.76",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.3"
   }

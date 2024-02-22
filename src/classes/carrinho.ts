@@ -1,15 +1,26 @@
+// Classe Carrinho
 import { Produto } from './produto';
 
 export class Carrinho {
   private itens: Map<Produto, number> = new Map();
 
-  adicionarItem(produto: Produto, quantidade: number): void {
+  adicionarItem(produto: Produto, quantidade: number): boolean {
+    if (quantidade > produto.quantidadeEstoque) {
+      console.log(`Estoque insuficiente para ${produto.nome}.`);
+      return false;
+    }
+
     if (this.itens.has(produto)) {
       this.itens.set(produto, this.itens.get(produto)! + quantidade);
     } else {
       this.itens.set(produto, quantidade);
     }
+
+    // Remove a quantidade do estoque
+    produto.quantidadeEstoque -= quantidade;
+
     console.log(`${quantidade} ${produto.nome} adicionado ao carrinho.`);
+    return true;
   }
 
   exibirCarrinho(): void {
@@ -22,16 +33,7 @@ export class Carrinho {
     const valorTotal = this.calcularValorTotal();
     console.log(`\nValor Total da Compra: R$ ${valorTotal.toFixed(2)}`);
   }
-
-  calcularTotal(): number {
-    let total = 0;
-    this.itens.forEach((quantidade, produto) => {
-      total += produto.preco * quantidade;
-    });
-    return total;
-  }
-
-  // Nova função para calcular o valor total
+  
   private calcularValorTotal(): number {
     let valorTotal = 0;
     this.itens.forEach((quantidade, produto) => {

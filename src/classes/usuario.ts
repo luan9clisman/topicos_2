@@ -1,14 +1,19 @@
-// usuario.ts
-export class Usuario {
-  private username: string;
-  private senha: string;
-  private tipo: 'cliente' | 'administrador';
+// Usuario.ts
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-  constructor(username: string, senha: string, tipo: 'cliente' | 'administrador') {
-    this.username = username;
-    this.senha = senha;
-    this.tipo = tipo;
-  }
+@Entity()
+export class Usuario {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column()
+  username: string;
+
+  @Column()
+  senha: string;
+
+  @Column()
+  tipo: 'cliente' | 'administrador';
 
   getUsername(): string {
     return this.username;

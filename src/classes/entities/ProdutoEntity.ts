@@ -1,6 +1,8 @@
+// entities/ProdutoEntity.ts
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+
 @Entity()
-export class Produto {
+export class ProdutoEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -12,8 +14,4 @@ export class Produto {
 
   @Column()
   quantidadeEstoque: number;
-
-  disponibilidade(): string {
-    return this.quantidadeEstoque > 0 ? 'Disponível' : 'Indisponível';
-  }
 }
